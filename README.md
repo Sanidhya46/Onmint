@@ -1,20 +1,78 @@
-# onmint
+# 🏥 Onmint Healthcare Platform
 
-A new Flutter project.
+## 🎯 Multi-App Architecture with Real-time Updates
 
-## Getting Started
+Complete healthcare platform with **3 separate Flutter apps** running on different ports, **PostgreSQL database**, and **real-time WebSocket updates**.
 
-This project is a starting point for a Flutter application.
+### 📱 Three Apps:
+1. **User App** (Port 8080) - For patients to book services
+2. **Vendor App** (Port 8081) - For doctors, nurses, ambulance, pharmacy, labs
+3. **Admin App** (Port 8082) - For monitoring and management
 
-A few resources to get you started if this is your first Flutter project:
+### ⚡ Real-time Features:
+- Instant booking notifications
+- Live status updates
+- Real-time location tracking (ambulance)
+- Push notifications
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🚀 Quick Start (3 Steps)
+
+### Step 1: Setup PostgreSQL Database
+
+```cmd
+# Install PostgreSQL from: https://www.postgresql.org/download/windows/
+# Then create database:
+psql -U postgres
+CREATE DATABASE onmint_healthcare;
+\q
+```
+
+**Read detailed guide:** `POSTGRESQL_SETUP.md`
+
+### Step 2: Configure & Start Backend
+
+Edit `backend_onmint/.env` with your PostgreSQL password, then:
+
+```cmd
+START_BACKEND_POSTGRESQL.bat
+```
+
+Backend will auto-create all tables and start on http://localhost:5000
+
+### Step 3: Create & Run Flutter Apps
+
+```cmd
+# Create 3 apps
+CREATE_FLUTTER_APPS.bat
+
+# Run each app in separate terminal:
+cd user_app && flutter run -d chrome --web-port=8080
+cd vendor_app && flutter run -d chrome --web-port=8081
+cd admin_app && flutter run -d chrome --web-port=8082
+```
+
+---
+
+## 📖 Documentation
+
+- **NEW_STRUCTURE_README.md** - Complete architecture guide
+- **POSTGRESQL_SETUP.md** - Database setup instructions
+- **API Documentation** - See routes in `backend_onmint/routes/`
+
+---
+
+## 🔥 What's New
+
+✅ **Migrated from MongoDB to PostgreSQL**
+✅ **3 Separate Flutter Apps** (User, Vendor, Admin)
+✅ **Real-time Updates** with Socket.IO
+✅ **Geospatial Queries** for nearby services
+✅ **Role-based Access Control**
+✅ **Instant Notifications**
+
+---
 
 
 
